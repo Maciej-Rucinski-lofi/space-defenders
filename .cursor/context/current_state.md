@@ -1,8 +1,7 @@
 # Current state of game
 
 Milestone 0 complete: project setup, game window, and starfield.
-Player movement (single ship) is implemented as a continuation of Milestone 0 setup.
-Screen wrapping for the player ship is implemented.
+Milestone 1 (player shooting) complete for a single ship.
 
 ## Implemented
 
@@ -11,11 +10,14 @@ Screen wrapping for the player ship is implemented.
 - `Game` class managing pygame init, main loop, quit handling, and FPS cap
 - Space background with randomly placed star field
 - Window closes on quit button or ESC key
-- `Player` entity (position, velocity, rotation, rotation speed, thrust force)
+- `Player` entity (position, velocity, rotation, rotation speed, thrust force, shoot cooldown)
 - Asteroids-style movement: rotate (arrow left/right), thrust (up arrow), inertia, frame-rate independent delta time
 - Placeholder triangle ship rendered at correct orientation
 - Player spawns at screen center, zero velocity, facing left
 - Screen wrapping: ship reappears on the opposite edge when leaving the screen; velocity and rotation are preserved
+- Maximum player velocity clamp (500 px/s)
+- Automatic shooting: bullets every 300ms at ship position, direction from ship rotation
+- `Bullet` entity with position, velocity, and lifespan; bullets move and despawn after 2.5s
 
 ## Controls (player 1)
 
@@ -25,7 +27,6 @@ Screen wrapping for the player ship is implemented.
 
 ## Not yet implemented
 
-- Shooting
 - Enemies, AI, waves
 - Collisions and HP
 - Second player

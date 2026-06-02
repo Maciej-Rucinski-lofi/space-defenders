@@ -1,3 +1,3 @@
 # Current task
 
-Milestone 1: Add player shooting (automatic fire, bullets).
+None — pick the next item from backlog.

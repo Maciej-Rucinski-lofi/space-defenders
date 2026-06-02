@@ -1,14 +1,9 @@
-import math
-
 from pygame.math import Vector2
 
 from config.player import MAX_PLAYER_SPEED
 from entities.player import Player
 from systems.player_input import PlayerInput
-
-
-def _forward_direction(rotation: float) -> Vector2:
-    return Vector2(math.sin(rotation), -math.cos(rotation))
+from world.direction import forward_direction
 
 
 def _apply_rotation(player: Player, player_input: PlayerInput, dt: float) -> None:
@@ -21,7 +16,7 @@ def _apply_rotation(player: Player, player_input: PlayerInput, dt: float) -> Non
 def _apply_thrust(player: Player, player_input: PlayerInput, dt: float) -> None:
     if not player_input.thrust:
         return
-    acceleration = _forward_direction(player.rotation) * player.thrust_force
+    acceleration = forward_direction(player.rotation) * player.thrust_force
     player.velocity += acceleration * dt
 
 

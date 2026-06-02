@@ -4,8 +4,8 @@ alwaysApply: true
 
 # Gameplay Balance
 
-Window height: 1000px
-Window width: 1200px
+Window height: 900px
+Window width: 1400px
 Player HP: 100
 Player fire cooldown: 300ms
 Enemy fire cooldown: range between 1200ms and 5000ms

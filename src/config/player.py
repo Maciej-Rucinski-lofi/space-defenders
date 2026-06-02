@@ -2,11 +2,11 @@ import math
 
 from pygame.math import Vector2
 
-from entities.player import Player
-
 ROTATION_SPEED = 3.5
 THRUST_FORCE = 250.0
 MAX_PLAYER_SPEED = 500.0
+SHOOT_COOLDOWN_MS = 400
+SHOOT_COOLDOWN_S = SHOOT_COOLDOWN_MS / 1000.0
 FACING_LEFT_ROTATION = -math.pi / 2
 
 SHIP_LOCAL_VERTICES: tuple[Vector2, ...] = (
@@ -17,13 +17,3 @@ SHIP_LOCAL_VERTICES: tuple[Vector2, ...] = (
 
 SHIP_COLOR = (0, 220, 255)
 SHIP_OUTLINE_COLOR = (200, 240, 255)
-
-
-def create_center_player(window_width: int, window_height: int) -> Player:
-    return Player(
-        position=Vector2(window_width / 2, window_height / 2),
-        velocity=Vector2(0, 0),
-        rotation=FACING_LEFT_ROTATION,
-        rotation_speed=ROTATION_SPEED,
-        thrust_force=THRUST_FORCE,
-    )

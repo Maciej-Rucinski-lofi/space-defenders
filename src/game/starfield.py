@@ -2,8 +2,7 @@ import random
 
 import pygame
 
-STAR_COUNT = 800
-STAR_COLOR = (255, 255, 255)
+from config.starfield import STAR_COLOR, STAR_COUNT
 
 
 class Starfield:
