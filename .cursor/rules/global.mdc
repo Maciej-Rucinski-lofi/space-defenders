@@ -20,3 +20,4 @@ After completing a feature:
 2. Move completed tasks to .cursor/tasks/completed.md.
 3. Add newly discovered issues to .cursor/tasks/known_issues.md.
 4. Do not modify files in .cursor/rules directory unless explicitly requested.
+5. Update README.md with appropriate info.
