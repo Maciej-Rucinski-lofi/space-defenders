@@ -8,11 +8,15 @@ from config.settings import (
     WINDOW_WIDTH,
 )
 from entities.bullet import Bullet
+from entities.enemy import Enemy
 from entities.player import Player
 from game.player_setup import create_center_player
 from game.starfield import Starfield
 from systems.bullet_system import update_bullets
 from systems.bullet_render import draw_bullets
+from systems.enemy_movement import update_enemies
+from systems.enemy_render import draw_enemies
+from systems.enemy_spawner import create_enemy_spawner, update_enemy_spawner
 from systems.player_input import read_player_one_input
 from systems.player_movement import update_player_movement
 from systems.player_render import draw_player
@@ -30,6 +34,8 @@ class Game:
         self._starfield = Starfield(WINDOW_WIDTH, WINDOW_HEIGHT)
         self._player: Player = create_center_player(WINDOW_WIDTH, WINDOW_HEIGHT)
         self._bullets: list[Bullet] = []
+        self._enemies: list[Enemy] = []
+        self._enemy_spawner = create_enemy_spawner()
 
     def run(self) -> None:
         while self._running:
@@ -52,10 +58,15 @@ class Game:
         update_player_screen_wrap(self._player)
         update_player_shooting(self._player, self._bullets, dt)
         update_bullets(self._bullets, dt)
+        update_enemy_spawner(
+            self._enemy_spawner, self._enemies, self._player, dt
+        )
+        update_enemies(self._enemies, self._player, dt)
 
     def _render(self) -> None:
         self._screen.fill(BACKGROUND_COLOR)
         self._starfield.draw(self._screen)
         draw_player(self._screen, self._player)
         draw_bullets(self._screen, self._bullets)
+        draw_enemies(self._screen, self._enemies)
         pygame.display.flip()

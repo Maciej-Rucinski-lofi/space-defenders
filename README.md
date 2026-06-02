@@ -17,7 +17,9 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Player shooting** (Milestone 1): the ship fires bullets automatically every 300ms in the direction it is facing. Bullets move independently and are removed when their lifetime ends or they leave the screen (with a configurable margin). No collisions or damage yet.
 
-Not yet implemented: enemies, AI, waves, collisions, second player, HUD, and audio.
+**Enemy spawning** (Milestone 2): enemies spawn every 2 seconds from a random screen edge, slightly off-screen. They move inward and gently steer toward the player. Red placeholder ships distinguish them from the player. No collisions, damage, or enemy shooting yet.
+
+Not yet implemented: enemy AI (beyond basic steering), waves, collisions, second player, HUD, and audio.
 
 ## Tech stack
 

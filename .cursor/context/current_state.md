@@ -2,6 +2,7 @@
 
 Milestone 0 complete: project setup, game window, and starfield.
 Milestone 1 (player shooting) complete for a single ship.
+Milestone 2 (enemy spawning) complete: periodic edge spawn and basic movement.
 
 ## Implemented
 
@@ -19,6 +20,10 @@ Milestone 1 (player shooting) complete for a single ship.
 - Automatic shooting: bullets every 300ms at ship position, direction from ship rotation
 - `Bullet` entity with position, velocity, direction, and lifespan timer
 - `BulletSystem` updates positions, expires bullets after 2.5s, and removes bullets that leave the screen (100px margin)
+- `Enemy` entity (position, velocity, rotation, speed, health)
+- `EnemySpawner` spawns enemies every 2s from a random screen edge (40px off-screen)
+- Enemies move at 100 px/s and gently steer toward the player
+- Red placeholder enemy ships rendered with rotation matching movement
 
 ## Controls (player 1)
 
@@ -28,8 +33,8 @@ Milestone 1 (player shooting) complete for a single ship.
 
 ## Not yet implemented
 
-- Enemies, AI, waves
-- Collisions and HP
+- Enemy shooting, advanced AI, waves
+- Collisions and HP damage
 - Second player
 - HUD and audio
 
