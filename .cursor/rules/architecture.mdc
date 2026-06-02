@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+
+# Architecture
+
+The game uses a simple ECS-inspired architecture.
+
+Entities:
+- Player
+- Enemy
+- Bullet
+
+Entities contain state only.
+Systems contain behaviour.
+Game orchestrates all systems.
+No business logic in main.py.

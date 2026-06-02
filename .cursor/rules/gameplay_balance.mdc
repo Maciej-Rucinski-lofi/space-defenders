@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+
+# Gameplay Balance
+
+Window height: 1000px
+Window width: 1200px
+Player HP: 100
+Player fire cooldown: 300ms
+Enemy fire cooldown: range between 1200ms and 5000ms
+Enemy HP: 20
+Enemy speed: 100 px/s

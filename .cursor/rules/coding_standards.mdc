@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+
+# Coding Standards
+
+Every public function must have type hints.
+Avoid global state.
+Prefer dataclasses for data containers.
+Use enums instead of magic strings.
+Keep files below 500 lines.
+Each function should be less than 40 lines.
+Prefer small separated files instead one large.
