@@ -2,6 +2,7 @@
 
 Milestone 0 complete: project setup, game window, and starfield.
 Player movement (single ship) is implemented as a continuation of Milestone 0 setup.
+Screen wrapping for the player ship is implemented.
 
 ## Implemented
 
@@ -14,6 +15,7 @@ Player movement (single ship) is implemented as a continuation of Milestone 0 se
 - Asteroids-style movement: rotate (arrow left/right), thrust (up arrow), inertia, frame-rate independent delta time
 - Placeholder triangle ship rendered at correct orientation
 - Player spawns at screen center, zero velocity, facing left
+- Screen wrapping: ship reappears on the opposite edge when leaving the screen; velocity and rotation are preserved
 
 ## Controls (player 1)
 
@@ -27,7 +29,6 @@ Player movement (single ship) is implemented as a continuation of Milestone 0 se
 - Enemies, AI, waves
 - Collisions and HP
 - Second player
-- Screen wrapping
 - HUD and audio
 
 ## Run

@@ -7,6 +7,7 @@ from game.starfield import Starfield
 from systems.player_input import read_player_one_input
 from systems.player_movement import update_player_movement
 from systems.player_render import draw_player
+from systems.player_screen_wrap import update_player_screen_wrap
 
 BACKGROUND_COLOR = (0, 0, 0)
 
@@ -39,6 +40,7 @@ class Game:
     def _update(self, dt: float) -> None:
         player_input = read_player_one_input()
         update_player_movement(self._player, player_input, dt)
+        update_player_screen_wrap(self._player)
 
     def _render(self) -> None:
         self._screen.fill(BACKGROUND_COLOR)

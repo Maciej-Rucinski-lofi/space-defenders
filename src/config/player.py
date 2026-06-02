@@ -4,8 +4,9 @@ from pygame.math import Vector2
 
 from entities.player import Player
 
-ROTATION_SPEED = 3.0
-THRUST_FORCE = 200.0
+ROTATION_SPEED = 3.5
+THRUST_FORCE = 250.0
+MAX_PLAYER_SPEED = 500.0
 FACING_LEFT_ROTATION = -math.pi / 2
 
 SHIP_LOCAL_VERTICES: tuple[Vector2, ...] = (
