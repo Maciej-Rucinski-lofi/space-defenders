@@ -7,3 +7,4 @@
 - [x] Add player screen wrapping (toroidal world, velocity and rotation preserved)
 - [x] Add maximum player velocity (clamp speed while preserving direction)
 - [x] Add player shooting (automatic fire every 300ms, bullets along ship facing)
+- [x] Bullet system and lifecycle (lifetime expiry, off-screen cleanup, in-place removal)

@@ -17,7 +17,8 @@ Milestone 1 (player shooting) complete for a single ship.
 - Screen wrapping: ship reappears on the opposite edge when leaving the screen; velocity and rotation are preserved
 - Maximum player velocity clamp (500 px/s)
 - Automatic shooting: bullets every 300ms at ship position, direction from ship rotation
-- `Bullet` entity with position, velocity, and lifespan; bullets move and despawn after 2.5s
+- `Bullet` entity with position, velocity, direction, and lifespan timer
+- `BulletSystem` updates positions, expires bullets after 2.5s, and removes bullets that leave the screen (100px margin)
 
 ## Controls (player 1)
 

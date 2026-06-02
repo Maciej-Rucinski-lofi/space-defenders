@@ -1,6 +1,6 @@
 from pygame.math import Vector2
 
-from config.bullet import BULLET_LIFESPAN_S, BULLET_SPEED
+from config.bullet import BULLET_LIFETIME_SECONDS, BULLET_SPEED
 from config.player import SHOOT_COOLDOWN_S
 from entities.bullet import Bullet
 from entities.player import Player
@@ -13,7 +13,8 @@ def _spawn_bullet(player: Player, bullets: list[Bullet]) -> None:
         Bullet(
             position=Vector2(player.position),
             velocity=direction * BULLET_SPEED,
-            time_remaining=BULLET_LIFESPAN_S,
+            direction=direction,
+            time_remaining=BULLET_LIFETIME_SECONDS,
         )
     )
 

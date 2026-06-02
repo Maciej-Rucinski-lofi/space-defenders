@@ -11,7 +11,7 @@ from entities.bullet import Bullet
 from entities.player import Player
 from game.player_setup import create_center_player
 from game.starfield import Starfield
-from systems.bullet_movement import update_bullets
+from systems.bullet_system import update_bullets
 from systems.bullet_render import draw_bullets
 from systems.player_input import read_player_one_input
 from systems.player_movement import update_player_movement

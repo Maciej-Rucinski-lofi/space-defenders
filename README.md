@@ -15,7 +15,7 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Player movement** is playable for one ship: Asteroids-style rotation and thrust with inertia (no friction), capped at a maximum speed so thrust cannot accelerate forever. Use the **arrow keys** to rotate and thrust forward. The ship wraps to the opposite screen edge when it leaves the visible area.
 
-**Player shooting** (Milestone 1): the ship fires bullets automatically every 300ms in the direction it is facing. Bullets move independently and disappear after a short lifespan. No collisions or damage yet.
+**Player shooting** (Milestone 1): the ship fires bullets automatically every 300ms in the direction it is facing. Bullets move independently and are removed when their lifetime ends or they leave the screen (with a configurable margin). No collisions or damage yet.
 
 Not yet implemented: enemies, AI, waves, collisions, second player, HUD, and audio.
 
