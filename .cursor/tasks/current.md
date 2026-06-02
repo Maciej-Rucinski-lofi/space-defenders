@@ -1,3 +1,3 @@
 # Current task
 
-Add one spacecraft player for now (Milestone 0 continuation / player setup).
+Milestone 1: Add player shooting (automatic fire, bullets).

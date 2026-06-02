@@ -13,7 +13,9 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Milestone 0** is complete: project setup, game window, and animated starfield background.
 
-Not yet implemented: player ships, shooting, enemies, AI, waves, collisions, HUD, and audio.
+**Player movement** is playable for one ship: Asteroids-style rotation and thrust with inertia (no friction). Use the **arrow keys** to rotate and thrust forward.
+
+Not yet implemented: shooting, enemies, AI, waves, collisions, second player, HUD, and audio.
 
 ## Tech stack
 
@@ -75,6 +77,15 @@ python main.py
 
 Close the game with the window close button or **ESC**.
 
+### Controls (player 1)
+
+| Key | Action |
+|-----|--------|
+| Left arrow | Rotate left |
+| Right arrow | Rotate right |
+| Up arrow | Thrust forward |
+| ESC | Quit |
+
 ## Project structure
 
 ```
@@ -83,8 +94,8 @@ space-defenders/
 │   ├── main.py           # Entry point
 │   ├── config/           # Window size, title, FPS
 │   ├── game/             # Game loop and rendering
-│   ├── entities/         # Player, enemy, bullet data (planned)
-│   └── systems/          # Gameplay systems (planned)
+│   ├── entities/         # Player, enemy, bullet data
+│   └── systems/          # Input, movement, rendering systems
 ├── scripts/              # setup and run helpers
 ├── requirements.txt
 └── .cursor/              # Project rules and task tracking
