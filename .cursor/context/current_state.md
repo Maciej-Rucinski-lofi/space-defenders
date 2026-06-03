@@ -3,6 +3,8 @@
 Milestone 0 complete: project setup, game window, and starfield.
 Milestone 1 (player shooting) complete for a single ship.
 Milestone 2 (enemy spawning) complete: periodic edge spawn and basic movement.
+Milestone 3 (enemy AI) partial: three enemy types with steering variation.
+Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list removal.
 
 ## Implemented
 
@@ -20,21 +22,26 @@ Milestone 2 (enemy spawning) complete: periodic edge spawn and basic movement.
 - Automatic shooting: bullets every 300ms at ship position, direction from ship rotation
 - `Bullet` entity with position, velocity, direction, and lifespan timer
 - `BulletSystem` updates positions, expires bullets after 2.5s, and removes bullets that leave the screen (100px margin)
-- `Enemy` entity (position, velocity, rotation, speed, health)
+- `Enemy` entity (position, velocity, rotation, speed, health, type, steering state)
 - `EnemySpawner` spawns enemies every 2s from a random screen edge (40px off-screen)
-- Enemies move at 100 px/s and gently steer toward the player
-- Red placeholder enemy ships rendered with rotation matching movement
+- Three enemy types (Chaser, Drifter, Kamikaze) with distinct speed, steering, and colours
+- Enemies steer toward the player with periodic steering offset changes
+- F3 debug overlay: target/velocity lines and circular collision hitboxes
+- `CollisionSystem`: bullet–enemy circle overlap; one bullet destroys one enemy; deferred removal from lists
 
 ## Controls (player 1)
 
 - **Left arrow** — rotate left
 - **Right arrow** — rotate right
 - **Up arrow** — thrust forward (ship keeps moving when released)
+- **F3** — toggle enemy AI and collision debug overlay
+- **ESC** — quit
 
 ## Not yet implemented
 
-- Enemy shooting, advanced AI, waves
-- Collisions and HP damage
+- Enemy shooting
+- Player damage from enemy bullets or contact
+- Wave system (spawn waves, clear when all enemies destroyed)
 - Second player
 - HUD and audio
 

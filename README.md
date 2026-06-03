@@ -19,9 +19,11 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Enemy spawning** (Milestone 2): enemies spawn every 2 seconds from a random screen edge, slightly off-screen.
 
-**Enemy behaviour** (Milestone 3, partial): three placeholder types spawn at random — **Chaser** (red, direct pursuit), **Drifter** (orange, slower with wider steering jitter), and **Kamikaze** (yellow, faster, unstable path, no shooting when that is added). Movement uses a steering offset that is recomputed every 0.5–2 seconds so paths are not perfectly straight. Press **F3** in-game to toggle debug lines (green = steered target direction, blue = velocity). Set `ENEMY_AI_SEED` in `config/enemy_behaviour.py` for reproducible AI randomness. No collisions, damage, or enemy shooting yet.
+**Enemy behaviour** (Milestone 3, partial): three placeholder types spawn at random — **Chaser** (red, direct pursuit), **Drifter** (orange, slower with wider steering jitter), and **Kamikaze** (yellow, faster, unstable path, no shooting when that is added). Movement uses a steering offset that is recomputed every 0.5–2 seconds so paths are not perfectly straight. Press **F3** in-game to toggle debug lines (green = steered target direction, blue = velocity) and circular hitbox outlines for bullets and enemies. Set `ENEMY_AI_SEED` in `config/enemy_behaviour.py` for reproducible AI randomness. No enemy shooting yet.
 
-Not yet implemented: enemy shooting, waves, collisions, second player, HUD, and audio.
+**Collisions:** player bullets use circular hit detection (`BULLET_RADIUS` in `config/bullet.py`, `ENEMY_RADIUS` in `config/enemy.py`). A hit removes both the bullet and the enemy (one bullet, one enemy). No player damage, scoring, or effects yet.
+
+Not yet implemented: enemy shooting, waves, second player, HUD, and audio.
 
 ## Tech stack
 
@@ -91,7 +93,7 @@ Close the game with the window close button or **ESC**.
 | Right arrow | Rotate right |
 | Up arrow | Thrust forward |
 | ESC | Quit |
-| F3 | Toggle enemy AI debug overlay |
+| F3 | Toggle enemy AI and collision hitbox debug overlay |
 
 ## Project structure
 

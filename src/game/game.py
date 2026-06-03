@@ -15,6 +15,8 @@ from game.starfield import Starfield
 from systems.bullet_system import update_bullets
 from systems.bullet_render import draw_bullets
 from config.enemy_behaviour import ENEMY_AI_DEBUG
+from systems.collision import process_bullet_enemy_collisions
+from systems.collision_debug_render import draw_collision_debug
 from systems.enemy_debug_render import draw_enemy_debug
 from systems.enemy_movement import update_enemies
 from systems.enemy_render import draw_enemies
@@ -68,6 +70,7 @@ class Game:
             self._enemy_spawner, self._enemies, self._player, dt
         )
         update_enemies(self._enemies, self._player, dt)
+        process_bullet_enemy_collisions(self._bullets, self._enemies)
 
     def _render(self) -> None:
         self._screen.fill(BACKGROUND_COLOR)
@@ -76,5 +79,6 @@ class Game:
         draw_bullets(self._screen, self._bullets)
         draw_enemies(self._screen, self._enemies)
         if self._enemy_ai_debug:
+            draw_collision_debug(self._screen, self._bullets, self._enemies)
             draw_enemy_debug(self._screen, self._enemies, self._player.position)
         pygame.display.flip()
