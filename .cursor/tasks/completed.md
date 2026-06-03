@@ -9,3 +9,4 @@
 - [x] Add player shooting (automatic fire every 300ms, bullets along ship facing)
 - [x] Bullet system and lifecycle (lifetime expiry, off-screen cleanup, in-place removal)
 - [x] Enemies spawn from screen edges (Milestone 2: periodic spawn, edge placement, movement toward player)
+- [x] Enemy behaviour and variation (steering offset, periodic re-evaluation, Chaser/Drifter/Kamikaze types, F3 debug overlay)

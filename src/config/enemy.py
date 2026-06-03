@@ -13,5 +13,3 @@ ENEMY_LOCAL_VERTICES: tuple[Vector2, ...] = (
     Vector2(10, -10),
 )
 
-ENEMY_COLOR = (255, 70, 70)
-ENEMY_OUTLINE_COLOR = (255, 180, 180)
