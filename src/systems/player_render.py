@@ -3,7 +3,7 @@ import math
 import pygame
 from pygame.math import Vector2
 
-from config.player import SHIP_COLOR, SHIP_LOCAL_VERTICES, SHIP_OUTLINE_COLOR
+from config.player import SHIP_LOCAL_VERTICES
 from entities.player import Player
 
 
@@ -29,5 +29,5 @@ def draw_player(surface: pygame.Surface, player: Player) -> None:
     if player.is_destroyed:
         return
     vertices = _ship_vertices(player)
-    pygame.draw.polygon(surface, SHIP_COLOR, vertices)
-    pygame.draw.polygon(surface, SHIP_OUTLINE_COLOR, vertices, 1)
+    pygame.draw.polygon(surface, player.ship_color, vertices)
+    pygame.draw.polygon(surface, player.ship_outline_color, vertices, 1)

@@ -2,6 +2,8 @@ import pygame
 from pygame.math import Vector2
 
 from entities.enemy import Enemy
+from entities.player import Player
+from game.player_setup import nearest_alive_player
 
 TARGET_LINE_LENGTH = 60.0
 VELOCITY_LINE_SCALE = 0.35
@@ -23,10 +25,13 @@ def _target_direction(enemy: Enemy, player_position: Vector2) -> Vector2 | None:
 def draw_enemy_debug(
     surface: pygame.Surface,
     enemies: list[Enemy],
-    player_position: Vector2,
+    players: list[Player],
 ) -> None:
     for enemy in enemies:
-        target_dir = _target_direction(enemy, player_position)
+        target = nearest_alive_player(players, enemy.position)
+        if target is None:
+            continue
+        target_dir = _target_direction(enemy, target.position)
         if target_dir is not None:
             target_end = enemy.position + target_dir * TARGET_LINE_LENGTH
             pygame.draw.line(

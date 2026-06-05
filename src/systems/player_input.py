@@ -13,6 +13,15 @@ class PlayerInput:
 def read_player_one_input() -> PlayerInput:
     keys = pygame.key.get_pressed()
     return PlayerInput(
+        rotate_left=keys[pygame.K_a],
+        rotate_right=keys[pygame.K_d],
+        thrust=keys[pygame.K_w],
+    )
+
+
+def read_player_two_input() -> PlayerInput:
+    keys = pygame.key.get_pressed()
+    return PlayerInput(
         rotate_left=keys[pygame.K_LEFT],
         rotate_right=keys[pygame.K_RIGHT],
         thrust=keys[pygame.K_UP],

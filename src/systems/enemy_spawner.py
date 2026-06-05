@@ -15,6 +15,8 @@ from config.settings import WINDOW_HEIGHT, WINDOW_WIDTH
 from entities.enemy import Enemy
 from entities.enemy_type import EnemyType
 from entities.player import Player
+from game.player_setup import nearest_alive_player
+from systems.health import any_player_alive
 from systems.enemy_movement import initial_steering_state
 from world.enemy_rng import get_enemy_rng
 
@@ -86,9 +88,12 @@ def _create_enemy(position: Vector2, target: Vector2, enemy_type: EnemyType) -> 
     )
 
 
-def _spawn_enemy(target: Player) -> Enemy:
+def _spawn_enemy(players: list[Player]) -> Enemy | None:
     edge = _random_edge()
     position = _spawn_position(edge, ENEMY_SPAWN_OFFSET)
+    target = nearest_alive_player(players, position)
+    if target is None:
+        return None
     enemy_type = _random_enemy_type()
     return _create_enemy(position, target.position, enemy_type)
 
@@ -96,15 +101,18 @@ def _spawn_enemy(target: Player) -> Enemy:
 def update_enemy_spawner(
     spawner: EnemySpawner,
     enemies: list[Enemy],
-    target: Player | None,
+    players: list[Player],
     dt: float,
     spawn_allowed: bool,
 ) -> bool:
-    if not spawn_allowed or target is None:
+    if not spawn_allowed or not any_player_alive(players):
         return False
     spawner.spawn_timer_remaining -= dt
     if spawner.spawn_timer_remaining > 0:
         return False
-    enemies.append(_spawn_enemy(target))
+    enemy = _spawn_enemy(players)
+    if enemy is None:
+        return False
+    enemies.append(enemy)
     spawner.spawn_timer_remaining = ENEMY_SPAWN_INTERVAL_S
     return True
