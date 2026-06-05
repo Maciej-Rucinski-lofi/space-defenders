@@ -29,6 +29,8 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Local co-op** (second player): two ships spawn left and right of center. Player 1 uses **W/A/D**; Player 2 uses the **arrow keys**. Both move, shoot, and take damage independently. Enemies steer toward the nearest living player.
 
+**Player names:** copy `player_names.example.json` to `player_names.json` in the project root and set `player1` / `player2` before launching. The health HUD shows those names instead of P1/P2. If the file is missing or invalid, defaults are `P1` and `P2`.
+
 Not yet implemented: enemy shooting, scoring, and audio.
 
 ## Tech stack

@@ -22,8 +22,8 @@ def _get_font() -> pygame.font.Font:
 def draw_health_hud(surface: pygame.Surface, players: list[Player]) -> None:
     font = _get_font()
     y = HEALTH_HUD_MARGIN_Y
-    for index, player in enumerate(players, start=1):
-        label = f"P{index} HP: {player.health}"
+    for player in players:
+        label = f"{player.name} HP: {player.health}"
         text_surface = font.render(label, True, HEALTH_HUD_COLOR)
         surface.blit(text_surface, (HEALTH_HUD_MARGIN_X, y))
         y += text_surface.get_height() + HEALTH_HUD_LINE_GAP

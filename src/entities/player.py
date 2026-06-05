@@ -14,5 +14,6 @@ class Player:
     health: int
     max_health: int
     is_destroyed: bool
+    name: str
     ship_color: tuple[int, int, int]
     ship_outline_color: tuple[int, int, int]

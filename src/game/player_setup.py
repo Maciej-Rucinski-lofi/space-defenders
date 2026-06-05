@@ -11,11 +11,13 @@ from config.player import (
     SPAWN_HORIZONTAL_OFFSET,
     THRUST_FORCE,
 )
+from config.player_names import load_player_names
 from entities.player import Player
 
 
 def _create_player_at(
     position: Vector2,
+    name: str,
     ship_color: tuple[int, int, int],
     ship_outline_color: tuple[int, int, int],
 ) -> Player:
@@ -29,21 +31,25 @@ def _create_player_at(
         health=MAX_HEALTH,
         max_health=MAX_HEALTH,
         is_destroyed=False,
+        name=name,
         ship_color=ship_color,
         ship_outline_color=ship_outline_color,
     )
 
 
 def create_players(window_width: int, window_height: int) -> list[Player]:
+    names = load_player_names()
     center = Vector2(window_width / 2, window_height / 2)
     return [
         _create_player_at(
             center + Vector2(-SPAWN_HORIZONTAL_OFFSET, 0),
+            names.player_one,
             SHIP_COLOR,
             SHIP_OUTLINE_COLOR,
         ),
         _create_player_at(
             center + Vector2(SPAWN_HORIZONTAL_OFFSET, 0),
+            names.player_two,
             PLAYER_TWO_SHIP_COLOR,
             PLAYER_TWO_SHIP_OUTLINE_COLOR,
         ),
