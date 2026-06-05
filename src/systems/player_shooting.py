@@ -30,6 +30,8 @@ def _try_fire(player: Player, bullets: list[Bullet]) -> None:
 def update_player_shooting(
     player: Player, bullets: list[Bullet], dt: float
 ) -> None:
+    if player.is_destroyed:
+        return
     player.shoot_cooldown_remaining -= dt
     if player.shoot_cooldown_remaining > 0:
         return

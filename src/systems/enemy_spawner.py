@@ -86,25 +86,25 @@ def _create_enemy(position: Vector2, target: Vector2, enemy_type: EnemyType) -> 
     )
 
 
-def _spawn_enemy(player: Player) -> Enemy:
+def _spawn_enemy(target: Player) -> Enemy:
     edge = _random_edge()
     position = _spawn_position(edge, ENEMY_SPAWN_OFFSET)
     enemy_type = _random_enemy_type()
-    return _create_enemy(position, player.position, enemy_type)
+    return _create_enemy(position, target.position, enemy_type)
 
 
 def update_enemy_spawner(
     spawner: EnemySpawner,
     enemies: list[Enemy],
-    player: Player,
+    target: Player | None,
     dt: float,
     spawn_allowed: bool,
 ) -> bool:
-    if not spawn_allowed:
+    if not spawn_allowed or target is None:
         return False
     spawner.spawn_timer_remaining -= dt
     if spawner.spawn_timer_remaining > 0:
         return False
-    enemies.append(_spawn_enemy(player))
+    enemies.append(_spawn_enemy(target))
     spawner.spawn_timer_remaining = ENEMY_SPAWN_INTERVAL_S
     return True

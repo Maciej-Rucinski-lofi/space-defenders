@@ -11,3 +11,6 @@ class Player:
     rotation_speed: float
     thrust_force: float
     shoot_cooldown_remaining: float
+    health: int
+    max_health: int
+    is_destroyed: bool

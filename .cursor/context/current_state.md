@@ -6,6 +6,7 @@ Milestone 2 (enemy spawning) complete: periodic edge spawn and basic movement.
 Milestone 3 (enemy AI) partial: three enemy types with steering variation.
 Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list removal.
 Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
+Milestone 5 (player health and game over) complete: HP, collision damage, destruction, game-over state.
 
 ## Implemented
 
@@ -14,7 +15,7 @@ Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 - `Game` class managing pygame init, main loop, quit handling, and FPS cap
 - Space background with randomly placed star field
 - Window closes on quit button or ESC key
-- `Player` entity (position, velocity, rotation, rotation speed, thrust force, shoot cooldown)
+- `Player` entity (position, velocity, rotation, rotation speed, thrust force, shoot cooldown, health, max health, destroyed flag)
 - Asteroids-style movement: rotate (arrow left/right), thrust (up arrow), inertia, frame-rate independent delta time
 - Placeholder triangle ship rendered at correct orientation
 - Player spawns at screen center, zero velocity, facing left
@@ -28,9 +29,14 @@ Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 - Three enemy types (Chaser, Drifter, Kamikaze) with distinct speed, steering, and colours
 - Enemies steer toward the player with periodic steering offset changes
 - F3 debug overlay: target/velocity lines and circular collision hitboxes
-- `CollisionSystem`: bullet–enemy circle overlap; one bullet destroys one enemy; deferred removal from lists
-- `WaveManager`: wave progression with linear enemy scaling (5, 8, 11, 14, …); gradual spawn via existing interval; 3s intermission between waves
-- Wave HUD: current wave number displayed top-left
+- `CollisionSystem`: bullet–enemy and enemy–player circle overlap; deferred removal from lists
+- `WaveManager`: wave progression with linear enemy scaling; gradual spawn via existing interval; 3s intermission between waves
+- Wave HUD: current wave number and remaining enemies displayed top-left
+- Player health: 100 HP max, 25 damage per enemy collision, text HUD (`P1 HP: …`)
+- Enemy–player collisions: suicidal enemy attack removes enemy and damages player
+- Destroyed players cannot move, shoot, or render
+- `GameState`: RUNNING / GAME_OVER; co-op continues while any player lives
+- Game over screen: centered **GAME OVER** and wave reached; gameplay updates stop
 
 ## Controls (player 1)
 
@@ -43,9 +49,8 @@ Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 ## Not yet implemented
 
 - Enemy shooting
-- Player damage from enemy bullets or contact
 - Second player
-- Player health and game over
+- Restart after game over
 - Scoring and audio
 
 ## Run

@@ -21,11 +21,13 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Enemy behaviour** (Milestone 3, partial): three placeholder types spawn at random — **Chaser** (red, direct pursuit), **Drifter** (orange, slower with wider steering jitter), and **Kamikaze** (yellow, faster, unstable path, no shooting when that is added). Movement uses a steering offset that is recomputed every 0.5–2 seconds so paths are not perfectly straight. Press **F3** in-game to toggle debug lines (green = steered target direction, blue = velocity) and circular hitbox outlines for bullets and enemies. Set `ENEMY_AI_SEED` in `config/enemy_behaviour.py` for reproducible AI randomness. No enemy shooting yet.
 
-**Collisions:** player bullets use circular hit detection (`BULLET_RADIUS` in `config/bullet.py`, `ENEMY_RADIUS` in `config/enemy.py`). A hit removes both the bullet and the enemy (one bullet, one enemy). No player damage, scoring, or effects yet.
+**Collisions:** player bullets use circular hit detection (`BULLET_RADIUS` in `config/bullet.py`, `ENEMY_RADIUS` in `config/enemy.py`). A hit removes both the bullet and the enemy (one bullet, one enemy). Enemy–player contact uses the same circular approach (`PLAYER_RADIUS` in `config/player.py`).
 
 **Wave system** (Milestone 4): enemies spawn in finite waves instead of continuously. Wave 1 starts with 20 enemies; each wave adds 3 more. Enemies still spawn gradually every 2 seconds. A wave ends when all enemies are spawned and destroyed, followed by a 3-second intermission. Each new wave shows a large centered announcement for 2 seconds, then a 1-second preparation pause before enemies begin spawning. The current wave number is also shown in the top-left corner.
 
-Not yet implemented: enemy shooting, player health, game over, second player, scoring, and audio.
+**Player health and game over** (Milestone 5): each player has 100 HP (`MAX_HEALTH` in `config/player.py`). Enemy collisions deal 25 damage (`ENEMY_COLLISION_DAMAGE`) and destroy the enemy. Health is shown as text in the top-left (`P1 HP: 100`). When a player reaches 0 HP the ship is removed from play (no movement or shooting). In co-op, the game continues while at least one player survives; when all players are destroyed, gameplay stops (no spawning, waves, or movement), a **GAME OVER** message appears with the wave reached, and rendering continues. No restart yet.
+
+Not yet implemented: enemy shooting, second player, scoring, and audio.
 
 ## Tech stack
 
@@ -122,7 +124,7 @@ space-defenders/
 | 2 | Enemy spawning |
 | 3 | Enemy AI |
 | 4 | Wave system ✓ |
-| 5 | Game over |
+| 5 | Game over ✓ |
 
 ## Repository
 

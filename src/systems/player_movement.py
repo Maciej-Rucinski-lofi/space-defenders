@@ -34,6 +34,8 @@ def _integrate_position(player: Player, dt: float) -> None:
 def update_player_movement(
     player: Player, player_input: PlayerInput, dt: float
 ) -> None:
+    if player.is_destroyed:
+        return
     _apply_rotation(player, player_input, dt)
     _apply_thrust(player, player_input, dt)
     _clamp_velocity(player)

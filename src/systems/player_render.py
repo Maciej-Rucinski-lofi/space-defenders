@@ -26,6 +26,8 @@ def _ship_vertices(player: Player) -> list[tuple[int, int]]:
 
 
 def draw_player(surface: pygame.Surface, player: Player) -> None:
+    if player.is_destroyed:
+        return
     vertices = _ship_vertices(player)
     pygame.draw.polygon(surface, SHIP_COLOR, vertices)
     pygame.draw.polygon(surface, SHIP_OUTLINE_COLOR, vertices, 1)

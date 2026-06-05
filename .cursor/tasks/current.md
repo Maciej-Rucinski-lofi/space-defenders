@@ -1,5 +1,5 @@
 # Current task
 
-**Next:** Game over (Milestone 5) — player health, damage, and game-over flow when both players are destroyed.
+**Next:** Enemy shooting — enemies fire at players on cooldown.
 
-See `.cursor/tasks/backlog.md` for other queued work (enemy shooting, player HP, second player).
+See `.cursor/tasks/backlog.md` for other queued work (second player, scoring, restart).

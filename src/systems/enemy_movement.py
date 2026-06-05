@@ -70,12 +70,15 @@ def _integrate_position(enemy: Enemy, dt: float) -> None:
     enemy.position += enemy.velocity * dt
 
 
-def update_enemies(enemies: list[Enemy], player: Player, dt: float) -> None:
+def update_enemies(
+    enemies: list[Enemy], target: Player | None, dt: float
+) -> None:
     rng = get_enemy_rng()
     for enemy in enemies:
         profile = _profile(enemy)
         _tick_behaviour_timer(enemy, profile, rng, dt)
-        _steer_toward_player(enemy, player, dt)
+        if target is not None:
+            _steer_toward_player(enemy, target, dt)
         _integrate_position(enemy, dt)
 
 

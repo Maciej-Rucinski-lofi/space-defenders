@@ -1,9 +1,14 @@
+from dataclasses import dataclass
+
 from pygame.math import Vector2
 
 from config.bullet import BULLET_RADIUS
 from config.enemy import ENEMY_RADIUS
+from config.player import PLAYER_RADIUS
 from entities.bullet import Bullet
 from entities.enemy import Enemy
+from entities.player import Player
+from systems.health import apply_enemy_collision_damage
 
 
 def _circles_overlap(
@@ -51,4 +56,43 @@ def process_bullet_enemy_collisions(
                 break
 
     _remove_indices(bullets, bullets_to_remove)
+    _remove_indices(enemies, enemies_to_remove)
+
+
+@dataclass(frozen=True)
+class EnemyPlayerHit:
+    enemy_index: int
+    player_index: int
+
+
+def _find_enemy_player_hits(
+    enemies: list[Enemy],
+    players: list[Player],
+) -> list[EnemyPlayerHit]:
+    hits: list[EnemyPlayerHit] = []
+    for enemy_index, enemy in enumerate(enemies):
+        for player_index, player in enumerate(players):
+            if player.is_destroyed:
+                continue
+            if _circles_overlap(
+                enemy.position,
+                ENEMY_RADIUS,
+                player.position,
+                PLAYER_RADIUS,
+            ):
+                hits.append(EnemyPlayerHit(enemy_index, player_index))
+                break
+    return hits
+
+
+def process_enemy_player_collisions(
+    enemies: list[Enemy],
+    players: list[Player],
+) -> None:
+    hits = _find_enemy_player_hits(enemies, players)
+    if not hits:
+        return
+    enemies_to_remove = {hit.enemy_index for hit in hits}
+    for hit in hits:
+        apply_enemy_collision_damage(players[hit.player_index])
     _remove_indices(enemies, enemies_to_remove)

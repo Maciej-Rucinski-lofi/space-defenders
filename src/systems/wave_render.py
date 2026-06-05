@@ -37,7 +37,7 @@ def draw_wave_hud(
     active_enemy_count: int,
 ) -> None:
     font = _get_hud_font()
-    wave_label = f"Wave {wave_manager.wave_number}"
+    wave_label = f"Wave: {wave_manager.wave_number}"
     wave_surface = font.render(wave_label, True, WAVE_HUD_COLOR)
     surface.blit(wave_surface, (WAVE_HUD_MARGIN_X, WAVE_HUD_MARGIN_Y))
 
@@ -54,7 +54,7 @@ def draw_wave_announcement(
     if wave_manager.phase is not WavePhase.ANNOUNCING:
         return
 
-    label = f"Wave: {wave_manager.wave_number}"
+    label = f"Wave {wave_manager.wave_number}"
     text_surface = _get_announcement_font().render(label, True, WAVE_ANNOUNCEMENT_COLOR)
     text_rect = text_surface.get_rect(
         center=(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
