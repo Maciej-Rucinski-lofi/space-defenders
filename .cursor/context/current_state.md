@@ -5,6 +5,7 @@ Milestone 1 (player shooting) complete for a single ship.
 Milestone 2 (enemy spawning) complete: periodic edge spawn and basic movement.
 Milestone 3 (enemy AI) partial: three enemy types with steering variation.
 Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list removal.
+Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 
 ## Implemented
 
@@ -28,6 +29,8 @@ Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list re
 - Enemies steer toward the player with periodic steering offset changes
 - F3 debug overlay: target/velocity lines and circular collision hitboxes
 - `CollisionSystem`: bullet–enemy circle overlap; one bullet destroys one enemy; deferred removal from lists
+- `WaveManager`: wave progression with linear enemy scaling (5, 8, 11, 14, …); gradual spawn via existing interval; 3s intermission between waves
+- Wave HUD: current wave number displayed top-left
 
 ## Controls (player 1)
 
@@ -41,9 +44,9 @@ Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list re
 
 - Enemy shooting
 - Player damage from enemy bullets or contact
-- Wave system (spawn waves, clear when all enemies destroyed)
 - Second player
-- HUD and audio
+- Player health and game over
+- Scoring and audio
 
 ## Run
 

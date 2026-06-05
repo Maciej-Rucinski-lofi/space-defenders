@@ -98,9 +98,13 @@ def update_enemy_spawner(
     enemies: list[Enemy],
     player: Player,
     dt: float,
-) -> None:
+    spawn_allowed: bool,
+) -> bool:
+    if not spawn_allowed:
+        return False
     spawner.spawn_timer_remaining -= dt
     if spawner.spawn_timer_remaining > 0:
-        return
+        return False
     enemies.append(_spawn_enemy(player))
     spawner.spawn_timer_remaining = ENEMY_SPAWN_INTERVAL_S
+    return True

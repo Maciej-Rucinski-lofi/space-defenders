@@ -11,3 +11,4 @@
 - [x] Enemies spawn from screen edges (Milestone 2: periodic spawn, edge placement, movement toward player)
 - [x] Enemy behaviour and variation (steering offset, periodic re-evaluation, Chaser/Drifter/Kamikaze types, F3 debug overlay)
 - [x] Bullet–enemy collisions (circular hitboxes, one bullet per enemy, safe list removal, F3 hitbox debug)
+- [x] Wave system (Milestone 4: finite waves, gradual spawn, 3s intermission, wave HUD, linear enemy scaling)

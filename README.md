@@ -23,7 +23,9 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Collisions:** player bullets use circular hit detection (`BULLET_RADIUS` in `config/bullet.py`, `ENEMY_RADIUS` in `config/enemy.py`). A hit removes both the bullet and the enemy (one bullet, one enemy). No player damage, scoring, or effects yet.
 
-Not yet implemented: enemy shooting, waves, second player, HUD, and audio.
+**Wave system** (Milestone 4): enemies spawn in finite waves instead of continuously. Wave 1 starts with 20 enemies; each wave adds 3 more. Enemies still spawn gradually every 2 seconds. A wave ends when all enemies are spawned and destroyed, followed by a 3-second intermission. Each new wave shows a large centered announcement for 2 seconds, then a 1-second preparation pause before enemies begin spawning. The current wave number is also shown in the top-left corner.
+
+Not yet implemented: enemy shooting, player health, game over, second player, scoring, and audio.
 
 ## Tech stack
 
@@ -119,7 +121,7 @@ space-defenders/
 | 1 | Shooting (player auto-fire) |
 | 2 | Enemy spawning |
 | 3 | Enemy AI |
-| 4 | Wave system |
+| 4 | Wave system ✓ |
 | 5 | Game over |
 
 ## Repository
