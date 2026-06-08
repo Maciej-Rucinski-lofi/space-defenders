@@ -33,8 +33,11 @@ class LevelManager:
         self._active_level.initialize()
 
     def update(self, dt: float) -> None:
-        if self._active_level is not None:
-            self._active_level.update(dt)
+        if self._active_level is None:
+            return
+        self._active_level.update(dt)
+        if self._active_level.is_complete():
+            self._advance_to_next_level()
 
     def render(self, screen: pygame.Surface) -> None:
         if self._active_level is not None:
@@ -48,5 +51,9 @@ class LevelManager:
         if level_type is LevelType.SURVIVAL:
             return SurvivalLevel(self._window_width, self._window_height)
         if level_type is LevelType.FORMATION:
-            return FormationLevel()
+            return FormationLevel(self._window_width, self._window_height)
         raise ValueError(f"Unknown level type: {level_type}")
+
+    def _advance_to_next_level(self) -> None:
+        if self._active_level_type is LevelType.SURVIVAL:
+            self.switch_to(LevelType.FORMATION)

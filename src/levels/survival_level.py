@@ -29,7 +29,9 @@ from systems.player_movement import update_player_movement
 from systems.player_render import draw_player
 from systems.player_screen_wrap import update_player_screen_wrap
 from systems.player_shooting import update_player_shooting
+from config.formation import SURVIVAL_COMPLETION_WAVE
 from systems.wave_manager import (
+    WavePhase,
     create_wave_manager,
     is_spawn_allowed,
     record_enemy_spawned,
@@ -103,7 +105,10 @@ class SurvivalLevel(BaseLevel):
         self._enemies = []
 
     def is_complete(self) -> bool:
-        return False
+        return (
+            self._wave_manager.wave_number == SURVIVAL_COMPLETION_WAVE
+            and self._wave_manager.phase is WavePhase.INTERMISSION
+        )
 
     def toggle_debug(self) -> None:
         self._enemy_ai_debug = not self._enemy_ai_debug

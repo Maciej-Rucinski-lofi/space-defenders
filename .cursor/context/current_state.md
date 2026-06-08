@@ -8,14 +8,15 @@ Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list re
 Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 Milestone 5 (player health and game over) complete: HP, collision damage, destruction, game-over state.
 Local co-op complete: two players on one keyboard with independent controls, health, and shooting.
-Level system architecture complete: `Game` owns a `LevelManager`; survival gameplay lives in `SurvivalLevel`; `FormationLevel` is a placeholder.
+Level system architecture complete: `Game` owns a `LevelManager`; survival gameplay lives in `SurvivalLevel`; `FormationLevel` provides arcade layout and placeholder enemies.
+Formation Mode layout complete: player zone at bottom, horizontal movement, scrolling starfield background, auto-transition after Survival Wave 3.
 
 ## Implemented
 
 - Python 3.12 + Pygame project structure under `src/`
 - Configuration module (`config/settings.py`) with window size, title, and target FPS
 - `Game` class managing pygame init, main loop, quit handling, FPS cap, and level delegation
-- Level layer: `BaseLevel` lifecycle, `LevelManager` (one active level), `SurvivalLevel` (existing gameplay), `FormationLevel` (placeholder)
+- Level layer: `BaseLevel` lifecycle, `LevelManager` (one active level, auto-advance after Wave 3), `SurvivalLevel` (existing gameplay), `FormationLevel` (arcade layout)
 - Space background with randomly placed star field
 - Window closes on quit button or ESC key
 - `Player` entity (position, velocity, rotation, rotation speed, thrust force, shoot cooldown, health, max health, destroyed flag)
@@ -40,6 +41,8 @@ Level system architecture complete: `Game` owns a `LevelManager`; survival gamep
 - Destroyed players cannot move, shoot, or render
 - `GameState`: RUNNING / GAME_OVER; co-op continues while any player lives
 - Game over screen: centered **GAME OVER** and wave reached; gameplay updates stop
+- Formation Mode: players spawn near bottom, horizontal A/D and arrow movement (no inertia or wrapping), automatic upward shooting, scrolling purple starfield, five static placeholder enemies
+- Survival Wave 3 completion triggers automatic transition to Formation Mode via `LevelManager`
 
 ## Controls
 
@@ -58,13 +61,18 @@ Level system architecture complete: `Game` owns a `LevelManager`; survival gamep
 ### Global
 
 - **F3** — toggle enemy AI and collision debug overlay (SurvivalLevel)
-- **F5** — switch to FormationLevel (placeholder)
-- **F6** — switch back to SurvivalLevel
+- **F5** — switch to FormationLevel (debug)
+- **F6** — switch back to SurvivalLevel (debug)
 - **ESC** — quit
+
+### Formation Mode (Player 1 / Player 2)
+
+- **A / Left arrow** — move left
+- **D / Right arrow** — move right
 
 ## Not yet implemented
 
-- Formation Mode gameplay (formations, bombs, multi-hit enemies)
+- Formation Mode enemy formations (group movement, bombs, multi-hit enemies)
 - Enemy shooting
 - Restart after game over
 - Scoring and audio

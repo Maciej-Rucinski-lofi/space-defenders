@@ -1,5 +1,6 @@
 import pygame
 
+from config.formation import FORMATION_BACKGROUND_COLOR
 from config.settings import (
     BACKGROUND_COLOR,
     TARGET_FPS,
@@ -51,7 +52,10 @@ class Game:
         self._level_manager.update(dt)
 
     def _render(self) -> None:
-        self._screen.fill(BACKGROUND_COLOR)
-        self._starfield.draw(self._screen)
+        if self._level_manager.active_level_type is LevelType.FORMATION:
+            self._screen.fill(FORMATION_BACKGROUND_COLOR)
+        else:
+            self._screen.fill(BACKGROUND_COLOR)
+            self._starfield.draw(self._screen)
         self._level_manager.render(self._screen)
         pygame.display.flip()

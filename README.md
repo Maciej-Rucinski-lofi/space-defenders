@@ -31,9 +31,11 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Player names:** copy `player_names.example.json` to `player_names.json` in the project root and set `player1` / `player2` before launching. The health HUD shows those names instead of P1/P2. If the file is missing or invalid, defaults are `P1` and `P2`.
 
-**Level system:** gameplay is organized into levels managed by `LevelManager`. The game starts in `SurvivalLevel` (waves, edge spawning, screen wrapping). Press **F5** to switch to a placeholder `FormationLevel`; press **F6** to return to survival. Only one level is active at a time.
+**Level system:** gameplay is organized into levels managed by `LevelManager`. The game starts in `SurvivalLevel` (waves, edge spawning, screen wrapping). Clearing **Wave 3** automatically transitions to `FormationLevel`. Press **F5** / **F6** to switch levels manually for debugging.
 
-Not yet implemented: Formation Mode gameplay, enemy shooting, scoring, and audio.
+**Formation Mode layout:** players spawn near the bottom of the screen in a bounded zone. Movement is horizontal only (**A/D** for Player 1, **arrow left/right** for Player 2) with immediate arcade response — no rotation, thrust, inertia, or screen wrapping. Ships face upward and continue automatic shooting. The background uses a dark purple colour with a slowly scrolling starfield and a "Formation Mode" label. Five static placeholder enemies appear near the top until formation logic is added.
+
+Not yet implemented: enemy formations, bombs, multi-hit enemies, enemy shooting, scoring, and audio.
 
 ## Tech stack
 
@@ -119,8 +121,15 @@ Close the game with the window close button or **ESC**.
 |-----|--------|
 | ESC | Quit |
 | F3 | Toggle enemy AI and collision hitbox debug overlay (SurvivalLevel) |
-| F5 | Switch to FormationLevel (placeholder) |
-| F6 | Switch back to SurvivalLevel |
+| F5 | Switch to FormationLevel (debug) |
+| F6 | Switch back to SurvivalLevel (debug) |
+
+#### Formation Mode
+
+| Key | Action |
+|-----|--------|
+| A / Left arrow | Move left |
+| D / Right arrow | Move right |
 
 ## Project structure
 

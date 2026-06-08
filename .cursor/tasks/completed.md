@@ -15,3 +15,4 @@
 - [x] Player health and game over (Milestone 5: HP, enemy collision damage, destruction, cooperative survival, game-over screen, halted gameplay)
 - [x] Local multiplayer second player (two ships, W/A/D and arrow controls, independent health and shooting, nearest-player enemy targeting, dual HP HUD)
 - [x] Level system architecture (BaseLevel, LevelManager, SurvivalLevel refactor, FormationLevel placeholder, F5/F6 level switching)
+- [x] Formation Mode layout (player zone, arcade horizontal movement, auto-transition after Wave 3, scrolling background, placeholder enemies)
