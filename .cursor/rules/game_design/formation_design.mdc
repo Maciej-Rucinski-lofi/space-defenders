@@ -1,0 +1,15 @@
+---
+alwaysApply: true
+---
+
+Players stay near the bottom of the screen.
+
+No screen wrapping.
+
+Movement is horizontal.
+
+Enemy formations move as a group.
+
+Enemies drop bombs.
+
+Enemies require multiple hits.

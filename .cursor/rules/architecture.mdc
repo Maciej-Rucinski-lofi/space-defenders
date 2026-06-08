@@ -1,17 +1,195 @@
 ---
-alwaysApply: true
----
+
+## alwaysApply: true
 
 # Architecture
 
-The game uses a simple ECS-inspired architecture.
+The game uses a lightweight ECS-inspired architecture.
 
-Entities:
-- Player
-- Enemy
-- Bullet
+The architecture is organized into four layers:
+
+1. Game
+2. Levels
+3. Systems
+4. Entities
+
+---
+
+# Game Layer
+
+Game is the top-level orchestrator.
+
+Responsibilities:
+
+* application lifecycle
+* pygame initialization
+* main loop
+* rendering pipeline
+* input collection
+* active level management
+* game state transitions
+
+Game must not contain gameplay rules.
+
+No business logic in main.py.
+
+---
+
+# Level Layer
+
+The game supports multiple level types.
+
+Examples:
+
+* SurvivalLevel
+* FormationLevel
+
+The Game owns exactly one active level.
+
+Levels define gameplay rules.
+
+Levels are responsible for:
+
+* level objectives
+* victory conditions
+* enemy composition
+* progression within the level
+* deciding which systems are active
+
+Levels are NOT responsible for:
+
+* rendering infrastructure
+* low-level entity updates
+* collision calculations
+* pygame-specific logic
+
+Levels coordinate systems but should not replace them.
+
+---
+
+# System Layer
+
+Systems contain behaviour.
+
+Systems operate on entities and perform game logic.
+
+Examples:
+
+* MovementSystem
+* CollisionSystem
+* ShootingSystem
+* EnemyAISystem
+* WaveSystem
+
+Systems should:
+
+* be focused on a single responsibility
+* be reusable across multiple levels
+* avoid direct dependencies on specific levels
+
+Systems should not own game state.
+
+---
+
+# Entity Layer
 
 Entities contain state only.
-Systems contain behaviour.
-Game orchestrates all systems.
-No business logic in main.py.
+
+Examples:
+
+* Player
+* Enemy
+* Bullet
+
+Entities should contain:
+
+* position
+* velocity
+* health
+* rotation
+* configuration values
+
+Entities should not contain gameplay logic.
+
+---
+
+# Level Management
+
+Levels do not directly switch to other levels.
+
+Incorrect:
+
+SurvivalLevel -> FormationLevel
+
+Correct:
+
+SurvivalLevel
+↓ completed
+LevelManager
+↓
+FormationLevel
+
+Level transitions are managed centrally.
+
+---
+
+# Dependency Direction
+
+Allowed:
+
+Game
+→ Level
+→ Systems
+→ Entities
+
+Not allowed:
+
+Entity
+→ System
+
+Entity
+→ Level
+
+System
+→ Game
+
+Level
+→ Game
+
+Lower layers must not depend on higher layers.
+
+---
+
+# Multiplayer
+
+All gameplay systems must support multiple players.
+
+Avoid assumptions such as:
+
+* game.player
+* single active player
+
+Prefer:
+
+* players collection
+* player iteration
+
+The game is designed for cooperative local multiplayer.
+
+---
+
+# Extensibility
+
+New gameplay modes should be implemented as new Levels.
+
+Avoid adding mode-specific conditionals throughout the codebase.
+
+Prefer:
+
+* new Level
+* reused Systems
+
+over:
+
+if mode == "formation":
+...

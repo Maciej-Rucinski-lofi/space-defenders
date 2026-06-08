@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+
+Ships rotate.
+
+Ships accelerate.
+
+There is no friction.
+
+Screen wrapping is enabled.
+
+Enemies spawn from screen edges.

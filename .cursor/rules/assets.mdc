@@ -1,9 +1,0 @@
----
-alwaysApply: true
----
-
-# Assets
-
-Use placeholder graphics during development.
-All sprites should support transparent backgrounds.
-Player sprites face upward by default.

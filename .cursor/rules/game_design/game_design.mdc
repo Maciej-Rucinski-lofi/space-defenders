@@ -1,0 +1,74 @@
+---
+alwaysApply: true
+---
+
+# Game Design
+
+## Core Concept
+
+The game is a local cooperative space shooter.
+
+Two players work together against AI-controlled enemies.
+
+The game is composed of multiple level types.
+
+Each level type may define its own movement model, enemy behaviour, objectives, and victory conditions.
+
+---
+
+## Players
+
+The game supports two simultaneous players.
+
+Players cooperate and never compete.
+
+Players can:
+
+- move
+- attack
+- take damage
+- be destroyed
+
+The game ends when all players are destroyed.
+
+---
+
+## Progression
+
+Gameplay progresses through levels.
+
+Each level defines:
+
+- enemy composition
+- objectives
+- completion conditions
+
+Level transitions are managed by the Level Manager.
+
+---
+
+## Combat
+
+Players attack enemies using projectiles.
+
+Enemies may attack players using:
+
+- collisions
+- projectiles
+- level-specific mechanics
+
+Combat behaviour may vary between level types.
+
+---
+
+## Extensibility
+
+New gameplay experiences should be introduced as new levels rather than modifying existing levels.
+
+Examples:
+
+- Survival Level
+- Formation Level
+- Boss Level
+- Escort Level
+- Asteroid Field Level
