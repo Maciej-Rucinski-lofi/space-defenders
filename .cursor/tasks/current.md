@@ -1,5 +1,5 @@
 # Current task
 
-**Next:** Enemy shooting — enemies fire at players on cooldown.
+**Next:** Implement Formation Mode gameplay (player movement, enemy formations, bombs, multi-hit enemies).
 
-See `.cursor/tasks/backlog.md` for other queued work (scoring, restart).
+See `.cursor/tasks/backlog.md` for other queued work (enemy shooting, scoring, restart).

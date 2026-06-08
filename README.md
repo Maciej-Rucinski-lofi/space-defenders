@@ -31,13 +31,15 @@ A cooperative 2D space shooter built with Python and Pygame. Two players pilot s
 
 **Player names:** copy `player_names.example.json` to `player_names.json` in the project root and set `player1` / `player2` before launching. The health HUD shows those names instead of P1/P2. If the file is missing or invalid, defaults are `P1` and `P2`.
 
-Not yet implemented: enemy shooting, scoring, and audio.
+**Level system:** gameplay is organized into levels managed by `LevelManager`. The game starts in `SurvivalLevel` (waves, edge spawning, screen wrapping). Press **F5** to switch to a placeholder `FormationLevel`; press **F6** to return to survival. Only one level is active at a time.
+
+Not yet implemented: Formation Mode gameplay, enemy shooting, scoring, and audio.
 
 ## Tech stack
 
 - Python 3.12
 - [Pygame](https://www.pygame.org/) 2.5+
-- ECS-inspired layout: entities hold state, systems hold behaviour, `Game` orchestrates the loop
+- ECS-inspired layout: entities hold state, systems hold behaviour, levels coordinate gameplay, `Game` orchestrates the loop
 
 ## Requirements
 
@@ -116,7 +118,9 @@ Close the game with the window close button or **ESC**.
 | Key | Action |
 |-----|--------|
 | ESC | Quit |
-| F3 | Toggle enemy AI and collision hitbox debug overlay |
+| F3 | Toggle enemy AI and collision hitbox debug overlay (SurvivalLevel) |
+| F5 | Switch to FormationLevel (placeholder) |
+| F6 | Switch back to SurvivalLevel |
 
 ## Project structure
 
@@ -126,6 +130,7 @@ space-defenders/
 │   ├── main.py           # Entry point
 │   ├── config/           # Game constants (window, player, bullets, enemies, starfield)
 │   ├── game/             # Game loop and rendering
+│   ├── levels/           # Level types and LevelManager
 │   ├── entities/         # Player, enemy, bullet data
 │   ├── systems/          # Input, movement, rendering systems
 │   └── world/            # World utilities (e.g. screen wrapping)

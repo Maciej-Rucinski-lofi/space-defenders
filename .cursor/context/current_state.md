@@ -8,12 +8,14 @@ Bullet–enemy collisions complete: circular hitboxes, lethal hits, safe list re
 Milestone 4 (wave system) complete: finite waves, intermission, wave HUD.
 Milestone 5 (player health and game over) complete: HP, collision damage, destruction, game-over state.
 Local co-op complete: two players on one keyboard with independent controls, health, and shooting.
+Level system architecture complete: `Game` owns a `LevelManager`; survival gameplay lives in `SurvivalLevel`; `FormationLevel` is a placeholder.
 
 ## Implemented
 
 - Python 3.12 + Pygame project structure under `src/`
 - Configuration module (`config/settings.py`) with window size, title, and target FPS
-- `Game` class managing pygame init, main loop, quit handling, and FPS cap
+- `Game` class managing pygame init, main loop, quit handling, FPS cap, and level delegation
+- Level layer: `BaseLevel` lifecycle, `LevelManager` (one active level), `SurvivalLevel` (existing gameplay), `FormationLevel` (placeholder)
 - Space background with randomly placed star field
 - Window closes on quit button or ESC key
 - `Player` entity (position, velocity, rotation, rotation speed, thrust force, shoot cooldown, health, max health, destroyed flag)
@@ -55,11 +57,14 @@ Local co-op complete: two players on one keyboard with independent controls, hea
 
 ### Global
 
-- **F3** — toggle enemy AI and collision debug overlay
+- **F3** — toggle enemy AI and collision debug overlay (SurvivalLevel)
+- **F5** — switch to FormationLevel (placeholder)
+- **F6** — switch back to SurvivalLevel
 - **ESC** — quit
 
 ## Not yet implemented
 
+- Formation Mode gameplay (formations, bombs, multi-hit enemies)
 - Enemy shooting
 - Restart after game over
 - Scoring and audio
